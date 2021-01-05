@@ -1,13 +1,14 @@
-" VIM Configuration - Based off configuration from Vincent Jousse
+" VIM Configuration - Vincent Jousse
 " Cancel the compatibility with Vi. Essential if you want
 " to enjoy the features of Vim
 set nocompatible
 set autoread
+set backspace=indent,eol,start
 
 " Activate pathogen
 call pathogen#infect()
 
-" Display
+" -- Display
 set title                 " Update the title of your window or your terminal
 set number                " Display line numbers
 set ruler                 " Display cursor position
@@ -38,11 +39,16 @@ set hidden
 
 " Enable syntax highlighting
 syntax enable
+
+" use a slightly darker background, like GitHub inline code blocks
+" let g:github_colors_soft = 1
+
 set background=light
 
 colorscheme github
 let g:airline_theme = "github"
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " Enable file specific behavior like syntax highlighting and indentation
 filetype on
@@ -76,6 +82,7 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " Ingore options
 set wildignore=node_modules/*,.git*,deps/*,*/tmp/*,*.so,*.swp,*.zip
 
+
 set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
@@ -83,7 +90,7 @@ let g:ale_fix_on_save = 1
 let g:ale_linters = {}
 let g:ale_linters.elixir = ['elixir-ls', 'credo']
 
-" let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace']}
 let g:ale_fixers.elixir = ['mix_format']
 
 let g:ale_sign_column_always = 1
