@@ -68,6 +68,10 @@ set shiftwidth=2
 " Activate the NERDTree when launching vim
 " autocmd vimenter * NERDTree
 
+" YAML Linting
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+set foldlevelstart=20
+
 " Press the i 2 times in row
 :imap ii <Esc>
 
@@ -77,11 +81,10 @@ set t_vb=
 " Fuzzy Search
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Ingore options
-set wildignore=node_modules/*,.git*,deps/*,*/tmp/*,*.so,*.swp,*.zip
-
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|_build)|(\.(swp|ico|git|svn))$'
 
 set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_completion_enabled = 1
@@ -112,3 +115,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 set splitbelow
 set splitright
+
+" Easily move between buffers
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
