@@ -72,9 +72,6 @@ set shiftwidth=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 set foldlevelstart=20
 
-" Press the i 2 times in row
-:imap ii <Esc>
-
 " Visual Bell
 set t_vb=
 
@@ -86,6 +83,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " Ingore options
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|build|_build)|(\.(swp|ico|git|svn))$'
 
+" Ale options
 set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_completion_enabled = 1
 let g:ale_fix_on_save = 1
@@ -119,3 +117,6 @@ set splitright
 " Easily move between buffers
 nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+
+" Lusty options
+let g:LustyExplorerSuppressRubyWarning=1
